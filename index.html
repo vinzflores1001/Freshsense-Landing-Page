@@ -43,7 +43,9 @@
 
     <!-- VISUAL SECTION (How It Works) -->
     <section class="visual">
-        <img src="Air.png" alt="Greenhouse interior showing air quality monitoring">
+        <div class="image-container">
+            <img src="Air.png" alt="Greenhouse interior showing air quality monitoring" class="thumbnail" id="airImage">
+        </div>
         <div class="visual-text">
             <h2>How It Works</h2>
             <p>Place the small sensor in your grow room. The app monitors air quality 24/7 and sends alerts when something unusual is detected.</p>
@@ -89,6 +91,35 @@
             <a href="#">Follow Us</a>
         </div>
     </footer>
+
+    <!-- POPUP MODAL (Hidden by default) -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <!-- LIGHTBOX JAVASCRIPT -->
+    <script>
+        var modal = document.getElementById("imageModal");
+        var img = document.getElementById("airImage");
+        var modalImg = document.getElementById("modalImage");
+        var span = document.getElementsByClassName("close")[0];
+
+        img.onclick = function() {
+            modal.style.display = "flex";
+            modalImg.src = this.src;
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        modal.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 
 </body>
 </html>
