@@ -12,7 +12,7 @@
     <div class="leaves"></div>
 
     <!-- HERO SECTION -->
-    <section class="hero">
+    <section class="hero" data-animate>
         <div class="hero-container">
             <div class="hero-text">
                 <h1>Save Your Harvest Before It’s Too Late</h1>
@@ -26,18 +26,18 @@
     </section>
 
     <!-- FEATURES SECTION -->
-    <section class="features">
+    <section class="features" data-animate>
         <h2>Why Farmers Love FreshSense</h2>
         <div class="feature-grid">
-            <div class="feature-card">
+            <div class="feature-card" data-animate>
                 <h3>Early Warning System</h3>
                 <p>Our smart sensor “smells” the air and alerts you before problems become visible.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card" data-animate>
                 <h3>Simple Mobile App</h3>
                 <p>Get real-time alerts and reports right on your phone — no tech skills needed.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card" data-animate>
                 <h3>Reduce Losses, Increase Profit</h3>
                 <p>Catch issues early to save your crop and grow higher-quality mushrooms.</p>
             </div>
@@ -45,7 +45,7 @@
     </section>
 
     <!-- VISUAL SECTION (How It Works) -->
-    <section class="visual">
+    <section class="visual" data-animate>
         <div class="image-container">
             <img src="Air.png" alt="Greenhouse interior showing air quality monitoring" class="thumbnail" id="airImage">
         </div>
@@ -55,15 +55,15 @@
 
             <!-- 3-STEP PROCESS -->
             <div class="steps">
-                <div class="step">
+                <div class="step" data-animate>
                     <h3>1. Install Sensor</h3>
                     <p>Place the small, wireless sensor anywhere in your grow room — no wiring needed.</p>
                 </div>
-                <div class="step">
+                <div class="step" data-animate>
                     <h3>2. Monitor App</h3>
                     <p>Check real-time air quality data and historical trends from your phone or tablet.</p>
                 </div>
-                <div class="step">
+                <div class="step" data-animate>
                     <h3>3. Get Alerts & Act Fast</h3>
                     <p>Receive instant notifications if mold, bacteria, or contamination is detected — so you can fix it before it ruins your crop.</p>
                 </div>
@@ -72,10 +72,10 @@
     </section>
 
     <!-- INFO SECTION -->
-    <section class="info">
+    <section class="info" data-animate>
         <h2>More About FreshSense</h2>
         <div class="info-grid">
-            <div class="info-item">
+            <div class="info-item" data-animate>
                 <h3>Benefits</h3>
                 <ul>
                     <li>Prevents crop loss</li>
@@ -83,7 +83,7 @@
                     <li>Improves mushroom quality</li>
                 </ul>
             </div>
-            <div class="info-item">
+            <div class="info-item" data-animate>
                 <h3>Process</h3>
                 <ol>
                     <li>Install sensor in grow room</li>
@@ -95,14 +95,14 @@
     </section>
 
     <!-- CTA SECTION -->
-    <section class="cta" id="cta">
+    <section class="cta" id="cta" data-animate>
         <h2>Ready to Protect Your Mushrooms?</h2>
         <p>Join hundreds of farmers who trust FreshSense to keep their crops healthy.</p>
         <a href="#" class="btn">Sign Up Today →</a>
     </section>
 
     <!-- FOOTER -->
-    <footer>
+    <footer data-animate>
         <p>&copy; 2025 FreshSense. All rights reserved.</p>
         <div class="footer-links">
             <a href="#">Contact Us</a>
@@ -168,45 +168,47 @@
         }
     </script>
 
-    <!-- FALLING LEAVES JAVASCRIPT - THIS IS THE KEY PART! -->
+    <!-- FALLING LEAVES JAVASCRIPT -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const leavesContainer = document.querySelector('.leaves');
-            const leafCount = 30; // More leaves for better visibility
+            const leafCount = 30;
 
             for (let i = 0; i < leafCount; i++) {
                 const leaf = document.createElement('div');
                 leaf.classList.add('leaf');
-                
-                // Random size between 20px and 60px
                 const size = Math.random() * 40 + 20;
                 leaf.style.width = `${size}px`;
                 leaf.style.height = `${size}px`;
-                
-                // Random position
                 leaf.style.left = `${Math.random() * 100}%`;
                 leaf.style.top = `${Math.random() * 100}%`;
-                
-                // Random animation duration between 10s and 25s
-                const duration = Math.random() * 15 + 10;
-                leaf.style.animationDuration = `${duration}s`;
-                
-                // Random delay
+                leaf.style.animationDuration = `${Math.random() * 15 + 10}s`;
                 leaf.style.animationDelay = `${Math.random() * 5}s`;
-                
-                // Random rotation
                 leaf.style.transform = `rotate(${Math.random() * 360}deg)`;
-                
-                // Use a leaf emoji
                 leaf.innerHTML = '🍂';
-                
-                // Make leaves more visible — earthy colors
                 const colors = ['#8B4513', '#A0522D', '#CD853F', '#D2691E', '#B8860B'];
                 leaf.style.color = colors[Math.floor(Math.random() * colors.length)];
-                leaf.style.opacity = 0.8; // More opaque
-                
+                leaf.style.opacity = 0.8;
                 leavesContainer.appendChild(leaf);
             }
+        });
+    </script>
+
+    <!-- SCROLL ANIMATION SCRIPT -->
+    <script>
+        // Fade-in on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('[data-animate]').forEach(el => {
+            observer.observe(el);
         });
     </script>
 
