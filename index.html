@@ -168,18 +168,18 @@
         }
     </script>
 
-    <!-- FALLING LEAVES JAVASCRIPT -->
+    <!-- FALLING LEAVES JAVASCRIPT - THIS IS THE KEY PART! -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const leavesContainer = document.querySelector('.leaves');
-            const leafCount = 15;
+            const leafCount = 30; // More leaves for better visibility
 
             for (let i = 0; i < leafCount; i++) {
                 const leaf = document.createElement('div');
                 leaf.classList.add('leaf');
                 
-                // Random size between 15px and 40px
-                const size = Math.random() * 25 + 15;
+                // Random size between 20px and 60px
+                const size = Math.random() * 40 + 20;
                 leaf.style.width = `${size}px`;
                 leaf.style.height = `${size}px`;
                 
@@ -187,8 +187,8 @@
                 leaf.style.left = `${Math.random() * 100}%`;
                 leaf.style.top = `${Math.random() * 100}%`;
                 
-                // Random animation duration between 15s and 30s
-                const duration = Math.random() * 15 + 15;
+                // Random animation duration between 10s and 25s
+                const duration = Math.random() * 15 + 10;
                 leaf.style.animationDuration = `${duration}s`;
                 
                 // Random delay
@@ -197,13 +197,13 @@
                 // Random rotation
                 leaf.style.transform = `rotate(${Math.random() * 360}deg)`;
                 
-                // Use a leaf emoji or SVG
-                leaf.innerHTML = '🍂'; // You can replace with an SVG for better control
+                // Use a leaf emoji
+                leaf.innerHTML = '🍂';
                 
-                // Make it look natural — earthy colors
+                // Make leaves more visible — earthy colors
                 const colors = ['#8B4513', '#A0522D', '#CD853F', '#D2691E', '#B8860B'];
                 leaf.style.color = colors[Math.floor(Math.random() * colors.length)];
-                leaf.style.opacity = 0.6 + Math.random() * 0.4;
+                leaf.style.opacity = 0.8; // More opaque
                 
                 leavesContainer.appendChild(leaf);
             }
