@@ -8,8 +8,14 @@
 </head>
 <body>
 
-    <!-- FALLING LEAVES BACKGROUND -->
-    <div class="leaves"></div>
+    <!-- SHOOTING STARS -->
+    <div class="stars"></div>
+
+    <!-- FIREFLIES -->
+    <div class="fireflies"></div>
+
+    <!-- FLOATING MUSHROOMS (SIDE) -->
+    <div class="floating-mushrooms"></div>
 
     <!-- HERO SECTION -->
     <section class="hero" data-animate>
@@ -30,14 +36,17 @@
         <h2>Why Farmers Love FreshSense</h2>
         <div class="feature-grid">
             <div class="feature-card" data-animate>
+                <div class="feature-icon">🍄</div>
                 <h3>Early Warning System</h3>
                 <p>Our smart sensor “smells” the air and alerts you before problems become visible.</p>
             </div>
             <div class="feature-card" data-animate>
+                <div class="feature-icon">🌿</div>
                 <h3>Simple Mobile App</h3>
                 <p>Get real-time alerts and reports right on your phone — no tech skills needed.</p>
             </div>
             <div class="feature-card" data-animate>
+                <div class="feature-icon">🪵</div>
                 <h3>Reduce Losses, Increase Profit</h3>
                 <p>Catch issues early to save your crop and grow higher-quality mushrooms.</p>
             </div>
@@ -123,6 +132,12 @@
         <img class="modal-content" id="mushroomModalImage">
     </div>
 
+    <!-- SOUND EFFECTS -->
+    <audio id="ambientSound" loop>
+        <source src="https://www.soundjay.com/nature/sounds/forest-wind-01.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
     <!-- LIGHTBOX JAVASCRIPT -->
     <script>
         var airModal = document.getElementById("imageModal");
@@ -166,57 +181,122 @@
         }
     </script>
 
-    <!-- FALLING LEAVES JAVASCRIPT -->
+    <!-- SHOOTING STARS JAVASCRIPT -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const leavesContainer = document.querySelector('.leaves');
-            const leafCount = 30;
+            const starsContainer = document.querySelector('.stars');
+            const starCount = 15;
 
-            for (let i = 0; i < leafCount; i++) {
-                const leaf = document.createElement('div');
-                leaf.classList.add('leaf');
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                const size = Math.random() * 10 + 5;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `-50px`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                star.style.opacity = 0.7;
+                starsContainer.appendChild(star);
+            }
+        });
+    </script>
+
+    <!-- FIREFLIES JAVASCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const firefliesContainer = document.querySelector('.fireflies');
+            const fireflyCount = 10;
+
+            for (let i = 0; i < fireflyCount; i++) {
+                const firefly = document.createElement('div');
+                firefly.classList.add('firefly');
+                const size = Math.random() * 6 + 3;
+                firefly.style.width = `${size}px`;
+                firefly.style.height = `${size}px`;
+                firefly.style.left = `${Math.random() * 100}%`;
+                firefly.style.top = `${Math.random() * 100}%`;
+                firefly.style.animationDuration = `${Math.random() * 5 + 3}s`;
+                firefly.style.animationDelay = `${Math.random() * 5}s`;
+                firefly.style.opacity = 0.8;
+                firefly.style.backgroundColor = '#ffeb3b';
+                firefly.style.boxShadow = '0 0 10px #ffeb3b';
+                firefliesContainer.appendChild(firefly);
+            }
+        });
+    </script>
+
+    <!-- FLOATING MUSHROOMS JAVASCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mushroomsContainer = document.querySelector('.floating-mushrooms');
+            const mushroomCount = 8;
+
+            for (let i = 0; i < mushroomCount; i++) {
+                const mushroom = document.createElement('div');
+                mushroom.classList.add('floating-mushroom');
                 const size = Math.random() * 40 + 20;
-                leaf.style.width = `${size}px`;
-                leaf.style.height = `${size}px`;
-                leaf.style.left = `${Math.random() * 100}%`;
-                leaf.style.top = `${Math.random() * 100 - 20}%`;
-                leaf.style.animationDuration = `${Math.random() * 15 + 15}s`;
-                leaf.style.animationDelay = `${Math.random() * 5}s`;
-                leaf.style.transform = `rotate(${Math.random() * 360}deg)`;
-                leaf.innerHTML = '🍂';
-                const colors = ['#8B4513', '#A0522D', '#CD853F', '#D2691E', '#B8860B'];
-                leaf.style.color = colors[Math.floor(Math.random() * colors.length)];
-                leaf.style.opacity = 0.6;
-                leavesContainer.appendChild(leaf);
+                mushroom.style.width = `${size}px`;
+                mushroom.style.height = `${size}px`;
+                mushroom.style.fontSize = `${size}px`;
+
+                // Random side: left or right
+                if (Math.random() > 0.5) {
+                    mushroom.style.left = `-${size}px`;
+                    mushroom.style.animationName = 'floatRight';
+                } else {
+                    mushroom.style.right = `-${size}px`;
+                    mushroom.style.animationName = 'floatLeft';
+                }
+
+                mushroom.style.top = `${Math.random() * 100}%`;
+                mushroom.style.animationDuration = `${Math.random() * 10 + 5}s`;
+                mushroom.style.animationDelay = `${Math.random() * 5}s`;
+                mushroom.style.opacity = 0.6;
+                mushroom.innerHTML = '🍄';
+                mushroom.style.color = ['#ff69b4', '#a0522d', '#cd853f'][Math.floor(Math.random() * 3)];
+                mushroom.style.textShadow = '0 0 8px rgba(255,105,180,0.5)';
+                mushroomsContainer.appendChild(mushroom);
             }
         });
     </script>
 
     <!-- SCROLL ANIMATION (PLAYS EVERY TIME) -->
     <script>
-        // Reusable animation that triggers on every enter/exit
         const animatedElements = document.querySelectorAll('[data-animate]');
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Remove then re-add to restart animation
                     entry.target.classList.remove('animate');
-                    void entry.target.offsetWidth; // Trigger reflow
+                    void entry.target.offsetWidth;
                     entry.target.classList.add('animate');
                 } else {
-                    // Optional: remove animate when out of view
                     entry.target.classList.remove('animate');
                 }
             });
         }, {
             threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px" // Trigger slightly before it's fully visible
+            rootMargin: "0px 0px -50px 0px"
         });
 
         animatedElements.forEach(el => {
             observer.observe(el);
         });
+    </script>
+
+    <!-- SOUND CONTROL SCRIPT -->
+    <script>
+        const ambientSound = document.getElementById('ambientSound');
+        ambientSound.volume = 0.2;
+        ambientSound.play().catch(e => {
+            console.log("Audio autoplay blocked. User must interact first.");
+        });
+
+        document.body.addEventListener('click', function() {
+            ambientSound.muted = false;
+        }, { once: true });
     </script>
 
 </body>
