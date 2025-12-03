@@ -48,23 +48,25 @@ body {
     height: 100%;
     pointer-events: none;
     z-index: -1;
+    overflow: hidden;
 }
 
 .leaf {
     position: absolute;
-    opacity: 0.7;
+    opacity: 0.8;
     animation: fall 15s linear infinite;
     pointer-events: none;
-    font-size: 20px;
+    font-size: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 9999;
 }
 
 @keyframes fall {
     0% {
         transform: translateY(-10vh) rotate(0deg);
-        opacity: 0.7;
+        opacity: 0.8;
     }
     100% {
         transform: translateY(100vh) rotate(360deg);
