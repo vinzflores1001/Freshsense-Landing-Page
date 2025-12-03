@@ -125,7 +125,6 @@
 
     <!-- LIGHTBOX JAVASCRIPT -->
     <script>
-        // Air Image Modal
         var airModal = document.getElementById("imageModal");
         var airImg = document.getElementById("airImage");
         var airModalImg = document.getElementById("modalImage");
@@ -146,7 +145,6 @@
             }
         }
 
-        // Mushroom Image Modal
         var mushroomModal = document.getElementById("mushroomModal");
         var mushroomImg = document.getElementById("mushroomImage");
         var mushroomModalImg = document.getElementById("mushroomModalImage");
@@ -181,33 +179,42 @@
                 leaf.style.width = `${size}px`;
                 leaf.style.height = `${size}px`;
                 leaf.style.left = `${Math.random() * 100}%`;
-                leaf.style.top = `${Math.random() * 100}%`;
-                leaf.style.animationDuration = `${Math.random() * 15 + 10}s`;
+                leaf.style.top = `${Math.random() * 100 - 20}%`;
+                leaf.style.animationDuration = `${Math.random() * 15 + 15}s`;
                 leaf.style.animationDelay = `${Math.random() * 5}s`;
                 leaf.style.transform = `rotate(${Math.random() * 360}deg)`;
                 leaf.innerHTML = '🍂';
                 const colors = ['#8B4513', '#A0522D', '#CD853F', '#D2691E', '#B8860B'];
                 leaf.style.color = colors[Math.floor(Math.random() * colors.length)];
-                leaf.style.opacity = 0.8;
+                leaf.style.opacity = 0.6;
                 leavesContainer.appendChild(leaf);
             }
         });
     </script>
 
-    <!-- SCROLL ANIMATION SCRIPT -->
+    <!-- SCROLL ANIMATION (PLAYS EVERY TIME) -->
     <script>
-        // Fade-in on scroll
+        // Reusable animation that triggers on every enter/exit
+        const animatedElements = document.querySelectorAll('[data-animate]');
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    // Remove then re-add to restart animation
+                    entry.target.classList.remove('animate');
+                    void entry.target.offsetWidth; // Trigger reflow
                     entry.target.classList.add('animate');
+                } else {
+                    // Optional: remove animate when out of view
+                    entry.target.classList.remove('animate');
                 }
             });
         }, {
-            threshold: 0.1
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px" // Trigger slightly before it's fully visible
         });
 
-        document.querySelectorAll('[data-animate]').forEach(el => {
+        animatedElements.forEach(el => {
             observer.observe(el);
         });
     </script>
