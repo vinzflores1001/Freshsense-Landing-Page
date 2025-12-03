@@ -8,6 +8,9 @@
 </head>
 <body>
 
+    <!-- FALLING BLOSSOMS BACKGROUND -->
+    <div class="blossoms"></div>
+
     <!-- HERO SECTION -->
     <section class="hero">
         <div class="hero-container">
@@ -17,7 +20,7 @@
                 <a href="#cta" class="btn">Get Started Now</a>
             </div>
             <div class="hero-image">
-                <img src="mashroom.jpg" alt="FreshSense device monitoring mushroom grow room">
+                <img src="mashroom.jpg" alt="FreshSense device monitoring mushroom grow room" class="thumbnail" id="mushroomImage">
             </div>
         </div>
     </section>
@@ -108,31 +111,59 @@
         </div>
     </footer>
 
-    <!-- POPUP MODAL -->
+    <!-- POPUP MODAL FOR AIR.PNG -->
     <div id="imageModal" class="modal">
         <span class="close">&times;</span>
         <img class="modal-content" id="modalImage">
     </div>
 
+    <!-- POPUP MODAL FOR MUSHROOM.JPG -->
+    <div id="mushroomModal" class="modal">
+        <span class="close close-mushroom">&times;</span>
+        <img class="modal-content" id="mushroomModalImage">
+    </div>
+
     <!-- LIGHTBOX JAVASCRIPT -->
     <script>
-        var modal = document.getElementById("imageModal");
-        var img = document.getElementById("airImage");
-        var modalImg = document.getElementById("modalImage");
-        var span = document.getElementsByClassName("close")[0];
+        // Air Image Modal
+        var airModal = document.getElementById("imageModal");
+        var airImg = document.getElementById("airImage");
+        var airModalImg = document.getElementById("modalImage");
+        var airSpan = document.getElementsByClassName("close")[0];
 
-        img.onclick = function() {
-            modal.style.display = "flex";
-            modalImg.src = this.src;
+        airImg.onclick = function() {
+            airModal.style.display = "flex";
+            airModalImg.src = this.src;
         }
 
-        span.onclick = function() {
-            modal.style.display = "none";
+        airSpan.onclick = function() {
+            airModal.style.display = "none";
         }
 
-        modal.onclick = function(event) {
-            if (event.target === modal) {
-                modal.style.display = "none";
+        airModal.onclick = function(event) {
+            if (event.target === airModal) {
+                airModal.style.display = "none";
+            }
+        }
+
+        // Mushroom Image Modal
+        var mushroomModal = document.getElementById("mushroomModal");
+        var mushroomImg = document.getElementById("mushroomImage");
+        var mushroomModalImg = document.getElementById("mushroomModalImage");
+        var mushroomSpan = document.getElementsByClassName("close-mushroom")[0];
+
+        mushroomImg.onclick = function() {
+            mushroomModal.style.display = "flex";
+            mushroomModalImg.src = this.src;
+        }
+
+        mushroomSpan.onclick = function() {
+            mushroomModal.style.display = "none";
+        }
+
+        mushroomModal.onclick = function(event) {
+            if (event.target === mushroomModal) {
+                mushroomModal.style.display = "none";
             }
         }
     </script>
