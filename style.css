@@ -9,7 +9,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #f5f7fa; /* soft light background */
+    background-color: #f5f7fa;
 }
 
 /* GLOBAL CLASSES */
@@ -143,6 +143,32 @@ body {
 
 .thumbnail:hover {
     transform: scale(1.05);
+}
+
+/* STEPS SECTION */
+.steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.step {
+    background: #f0f5f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.step h3 {
+    color: #2c7be5;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.step p {
+    font-size: 0.95rem;
+    line-height: 1.5;
 }
 
 /* INFO SECTION */
@@ -286,7 +312,8 @@ footer {
     }
 
     .feature-grid,
-    .info-grid {
+    .info-grid,
+    .steps {
         grid-template-columns: 1fr;
     }
 
