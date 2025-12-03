@@ -8,8 +8,8 @@
 </head>
 <body>
 
-    <!-- FALLING BLOSSOMS BACKGROUND -->
-    <div class="blossoms"></div>
+    <!-- FALLING LEAVES BACKGROUND -->
+    <div class="leaves"></div>
 
     <!-- HERO SECTION -->
     <section class="hero">
@@ -166,6 +166,48 @@
                 mushroomModal.style.display = "none";
             }
         }
+    </script>
+
+    <!-- FALLING LEAVES JAVASCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const leavesContainer = document.querySelector('.leaves');
+            const leafCount = 15;
+
+            for (let i = 0; i < leafCount; i++) {
+                const leaf = document.createElement('div');
+                leaf.classList.add('leaf');
+                
+                // Random size between 15px and 40px
+                const size = Math.random() * 25 + 15;
+                leaf.style.width = `${size}px`;
+                leaf.style.height = `${size}px`;
+                
+                // Random position
+                leaf.style.left = `${Math.random() * 100}%`;
+                leaf.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation duration between 15s and 30s
+                const duration = Math.random() * 15 + 15;
+                leaf.style.animationDuration = `${duration}s`;
+                
+                // Random delay
+                leaf.style.animationDelay = `${Math.random() * 5}s`;
+                
+                // Random rotation
+                leaf.style.transform = `rotate(${Math.random() * 360}deg)`;
+                
+                // Use a leaf emoji or SVG
+                leaf.innerHTML = '🍂'; // You can replace with an SVG for better control
+                
+                // Make it look natural — earthy colors
+                const colors = ['#8B4513', '#A0522D', '#CD853F', '#D2691E', '#B8860B'];
+                leaf.style.color = colors[Math.floor(Math.random() * colors.length)];
+                leaf.style.opacity = 0.6 + Math.random() * 0.4;
+                
+                leavesContainer.appendChild(leaf);
+            }
+        });
     </script>
 
 </body>
